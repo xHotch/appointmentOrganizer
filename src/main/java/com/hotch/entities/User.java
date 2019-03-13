@@ -29,10 +29,9 @@ public class User {
 
     public List<Appointment> getAppointmentList() {
         if (appointmentList==null){
-            return new ArrayList<>();
-        } else {
-            return appointmentList;
+            appointmentList = new ArrayList<>();
         }
+        return appointmentList;
     }
 
 }

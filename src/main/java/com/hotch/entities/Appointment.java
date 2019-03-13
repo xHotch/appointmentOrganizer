@@ -46,10 +46,9 @@ public class Appointment {
 
     public List<User> getUserList() {
         if (userList == null) {
-            return new ArrayList<>();
-        } else {
-            return userList;
+            userList = new ArrayList<>();
         }
+        return userList;
     }
 
     public void setUserList(List<User> userList) {

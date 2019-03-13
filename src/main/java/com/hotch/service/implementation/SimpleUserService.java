@@ -1,6 +1,9 @@
-package com.hotch.Service;
+package com.hotch.service.implementation;
 
-import com.hotch.Entities.User;
+import com.hotch.entities.Appointment;
+import com.hotch.entities.User;
+import com.hotch.service.exceptions.UserNotFoundException;
+import com.hotch.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -9,7 +12,7 @@ import java.util.List;
 
 
 /**
- * Simple User Service, does not call a persistence layer to persist data, only stores it in a simple HashMap
+ * Simple User service, does not call a persistence layer to persist data, only stores it in a simple HashMap
  */
 @Service
 public class SimpleUserService implements UserService {
@@ -28,7 +31,7 @@ public class SimpleUserService implements UserService {
     }
 
     @Override
-    public User show(int id) throws UserNotFoundException{
+    public User show(int id) throws UserNotFoundException {
         User lookedUpUser = userList.get(id);
         if (lookedUpUser == null) {
             throw new UserNotFoundException("No user found with id" + id);
@@ -47,7 +50,9 @@ public class SimpleUserService implements UserService {
         if (lookedUpUser == null) {
             throw new UserNotFoundException("No user found with id" + id);
         }
-        //todo look at appointments
+        for (Appointment appointment: lookedUpUser.getAppointmentList()){
+            appointment.getUserList().remove(lookedUpUser);
+        }
         userList.remove(id);
     }
 
@@ -60,7 +65,8 @@ public class SimpleUserService implements UserService {
             userList.put(id,editedUser);
             return editedUser;
         }
-        lookedUpUser.edit(editedUser);
+
+        lookedUpUser.setName(editedUser.getName());
         return lookedUpUser;
     }
 }

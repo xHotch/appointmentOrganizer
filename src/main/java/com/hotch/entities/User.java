@@ -1,5 +1,6 @@
-package com.hotch.Entities;
+package com.hotch.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -27,11 +28,11 @@ public class User {
     }
 
     public List<Appointment> getAppointmentList() {
-        return appointmentList;
+        if (appointmentList==null){
+            return new ArrayList<>();
+        } else {
+            return appointmentList;
+        }
     }
 
-    public void edit(User editedUser) {
-        this.name=editedUser.getName();
-
-    }
 }

@@ -1,8 +1,8 @@
-package com.hotch.Rest;
+package com.hotch.rest;
 
-import com.hotch.Entities.User;
-import com.hotch.Service.UserNotFoundException;
-import com.hotch.Service.UserService;
+import com.hotch.entities.User;
+import com.hotch.service.exceptions.UserNotFoundException;
+import com.hotch.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;

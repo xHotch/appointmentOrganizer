@@ -1,6 +1,7 @@
-package com.hotch.Service;
+package com.hotch.service;
 
-import com.hotch.Entities.User;
+import com.hotch.entities.User;
+import com.hotch.service.exceptions.UserNotFoundException;
 
 import java.util.List;
 

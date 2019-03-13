@@ -1,7 +1,7 @@
-package com.hotch.Service;
+package com.hotch.service.exceptions;
 
 public class UserNotFoundException extends Exception {
-    UserNotFoundException(String message) {
+    public UserNotFoundException(String message) {
         super(message);
     }
 
